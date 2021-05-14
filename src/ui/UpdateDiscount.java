@@ -172,6 +172,29 @@ public class UpdateDiscount extends JFrame {
                 }
         );
 
+        button2.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        discount = Float.parseFloat(textField.getText());
+                        System.out.println(discount);
+
+                        //更新
+                        updateDiscount(discount);
+                        //查询
+                        DefaultTableModel tableModel = new DefaultTableModel(queryData(), head) {
+                            public boolean isCellEditable(int row, int column) {
+                                return false;
+                            }
+                        };
+                        table1.setModel(tableModel);
+
+                        //恢复默认折扣
+                        discount = (float) 0.67;
+                    }
+                }
+        );
+
         contentPane.setPreferredSize(new Dimension(715, 515));
         pack();
         setVisible(true);

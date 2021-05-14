@@ -126,13 +126,13 @@ public class UpdateDiscount extends JFrame {
         button1.setBounds(new Rectangle(new Point(610, 400), button1.getPreferredSize()));
 
         //---- button2 ----
-        button2.setText("\u66f4\u65b0\u6298\u6263");//自定义更新
+        button2.setText("\u81ea\u5b9a\u4e49\u66f4\u65b0");//自定义更新
         contentPane.add(button2);
-        button2.setBounds(new Rectangle(new Point(610, 460), button2.getPreferredSize()));
+        button2.setBounds(new Rectangle(new Point(600, 460), button2.getPreferredSize()));
 
         //---- textField ----
         contentPane.add(textField);
-        textField.setBounds(520, 460, 70, 28);
+        textField.setBounds(530, 460, 70, 28);
 
         //======== scrollPane1 ========
         {

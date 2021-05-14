@@ -110,9 +110,11 @@ public class UpdateDiscount extends JFrame {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         button1 = new JButton();
+        button2 = new JButton();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
         label1 = new JLabel();
+        textField = new JTextField("");
 
         //======== this ========
         var contentPane = getContentPane();
@@ -122,6 +124,15 @@ public class UpdateDiscount extends JFrame {
         button1.setText("\u66f4\u65b0\u6298\u6263");//更新折扣
         contentPane.add(button1);
         button1.setBounds(new Rectangle(new Point(610, 400), button1.getPreferredSize()));
+
+        //---- button2 ----
+        button2.setText("\u66f4\u65b0\u6298\u6263");//自定义更新
+        contentPane.add(button2);
+        button2.setBounds(new Rectangle(new Point(610, 460), button2.getPreferredSize()));
+
+        //---- textField ----
+        contentPane.add(textField);
+        textField.setBounds(520, 460, 70, 28);
 
         //======== scrollPane1 ========
         {
@@ -171,9 +182,11 @@ public class UpdateDiscount extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JButton button1;
+    private JButton button2;
     private JScrollPane scrollPane1;
     private JTable table1;
     private JLabel label1;
+    private JTextField textField;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private Object[][] data = null;
     private String head[] = {"商品", "售价", "折扣","折后价"};

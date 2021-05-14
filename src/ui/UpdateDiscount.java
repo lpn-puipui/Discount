@@ -4,6 +4,8 @@
 
 package ui;
 
+import Util.HolidayUtil;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -11,17 +13,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  * @author 1
  */
 public class UpdateDiscount extends JFrame {
-    float discount = (float) 0.67;
+    static float discount;
     float realSellingprice;
 
+    static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+    static String date = df.format(new Date());
+
+
     public static void main(String[] args) {
+        System.out.println(date);
+        if(HolidayUtil.request(date).equals("2")){
+            discount = (float) 0.85;
+            System.out.println("Holiday------0.85");
+        }else if(HolidayUtil.request(date).equals("1")){
+            discount = (float) 0.95;
+            System.out.println("Resting------0.95");
+        }else if(HolidayUtil.request(date).equals("0")){
+            discount = (float) 1;
+            System.out.println("Working------1");
+        }
+
+
         new UpdateDiscount();
     }
     public UpdateDiscount() {
@@ -190,7 +211,16 @@ public class UpdateDiscount extends JFrame {
                         table1.setModel(tableModel);
 
                         //恢复默认折扣
-                        discount = (float) 0.67;
+                        if(HolidayUtil.request(date).equals("2")){
+                            discount = (float) 0.85;
+                            System.out.println("Holiday------0.85");
+                        }else if(HolidayUtil.request(date).equals("1")){
+                            discount = (float) 0.95;
+                            System.out.println("Resting------0.95");
+                        }else if(HolidayUtil.request(date).equals("0")){
+                            discount = (float) 1;
+                            System.out.println("Working------1");
+                        }
                     }
                 }
         );

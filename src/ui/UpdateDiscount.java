@@ -183,6 +183,8 @@ public class UpdateDiscount extends JFrame {
             }
         };
         table1.setModel(tableModel);
+        Check check = new Check();
+        check.setAlwaysOnTop(true);
 
         //添加事件
         button1.addActionListener(
@@ -198,6 +200,9 @@ public class UpdateDiscount extends JFrame {
                             }
                         };
                         table1.setModel(tableModel);
+
+                        Check check = new Check();
+                        check.setAlwaysOnTop(true);
                     }
                 }
         );
@@ -221,6 +226,9 @@ public class UpdateDiscount extends JFrame {
                                 }
                             };
                             table1.setModel(tableModel);
+
+                            Check check = new Check();
+                            check.setAlwaysOnTop(true);
 
                             //恢复默认折扣
                             if (HolidayUtil.request(date).equals("2")) {

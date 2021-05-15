@@ -129,12 +129,13 @@ public class UpdateDiscount extends JFrame {
     }
 
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+
         button1 = new JButton();
         button2 = new JButton();
         scrollPane1 = new JScrollPane();
         table1 = new JTable();
         label1 = new JLabel();
+        label2 = new JLabel();
         textField = new JTextField("");
 
         //======== this ========
@@ -168,6 +169,14 @@ public class UpdateDiscount extends JFrame {
         contentPane.add(label1);
         label1.setBounds(300, 30, 235, 40);
 
+        //---- label2 ----
+        label2.setText("\u8f93\u5165\u9519\u8bef\uff01\u8bf7\u8f93\u51650-1\u4e4b\u95f4\u7684\u4e24\u4f4d\u5c0f\u6570\uff01");
+        contentPane.add(label2);
+        label2.setBounds(new Rectangle(new Point(510, 495), label2.getPreferredSize()));
+        label2.setVisible(false);
+
+        //进来就能看见更新
+        updateDiscount(discount);
         DefaultTableModel tableModel = new DefaultTableModel(queryData(), head) {
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -197,29 +206,36 @@ public class UpdateDiscount extends JFrame {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
-                        discount = Float.parseFloat(textField.getText());
-                        System.out.println(discount);
+                        label2.setVisible(false);
+                        float i= Float.parseFloat(textField.getText());
+                        if(i>=(float) 0&&i<=(float) 1) {
+                            discount = Float.parseFloat(textField.getText());
+                            System.out.println(discount);
 
-                        //更新
-                        updateDiscount(discount);
-                        //查询
-                        DefaultTableModel tableModel = new DefaultTableModel(queryData(), head) {
-                            public boolean isCellEditable(int row, int column) {
-                                return false;
+                            //更新
+                            updateDiscount(discount);
+                            //查询
+                            DefaultTableModel tableModel = new DefaultTableModel(queryData(), head) {
+                                public boolean isCellEditable(int row, int column) {
+                                    return false;
+                                }
+                            };
+                            table1.setModel(tableModel);
+
+                            //恢复默认折扣
+                            if (HolidayUtil.request(date).equals("2")) {
+                                discount = (float) 0.85;
+                                System.out.println("Holiday------0.85");
+                            } else if (HolidayUtil.request(date).equals("1")) {
+                                discount = (float) 0.95;
+                                System.out.println("Resting------0.95");
+                            } else if (HolidayUtil.request(date).equals("0")) {
+                                discount = (float) 1;
+                                System.out.println("Working------1");
                             }
-                        };
-                        table1.setModel(tableModel);
-
-                        //恢复默认折扣
-                        if(HolidayUtil.request(date).equals("2")){
-                            discount = (float) 0.85;
-                            System.out.println("Holiday------0.85");
-                        }else if(HolidayUtil.request(date).equals("1")){
-                            discount = (float) 0.95;
-                            System.out.println("Resting------0.95");
-                        }else if(HolidayUtil.request(date).equals("0")){
-                            discount = (float) 1;
-                            System.out.println("Working------1");
+                        }else{
+                            label2.setVisible(true);
+                            textField.setText("");
                         }
                     }
                 }
@@ -230,6 +246,11 @@ public class UpdateDiscount extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(getOwner());
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+
+
+
+
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -239,6 +260,7 @@ public class UpdateDiscount extends JFrame {
     private JScrollPane scrollPane1;
     private JTable table1;
     private JLabel label1;
+    private JLabel label2;
     private JTextField textField;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     private Object[][] data = null;

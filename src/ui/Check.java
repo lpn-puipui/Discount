@@ -39,7 +39,6 @@ public class Check extends JFrame {
         button1.setText("\u786e\u5b9a");
         contentPane.add(button1);
         button1.setBounds(new Rectangle(new Point(130, 60), button1.getPreferredSize()));
-
         button1.addActionListener(
                 new ActionListener() {
                     @Override
@@ -54,7 +53,6 @@ public class Check extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
         this.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
